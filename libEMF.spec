@@ -2,13 +2,14 @@ Summary:	A library for generating Enhanced Metafiles
 Summary(pl):	Biblioteka do generowania plików w formacie Enhanced Metafile
 Name:		libEMF
 Version:	1.0.3
-Release:	5%{?dist}
+Release:	6%{?dist}
 License:	LGPLv2+ and GPLv2+
 Group:		System Environment/Libraries
 Source0:	http://dl.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
 # Source0-md5:	a4e91fd8077ce5f540f569e20e8ef7ff
 Patch0:		%{name}-amd64.patch
 Patch1:		%{name}-axp.patch
+Patch2:		%{name}-gcc43.patch
 URL:		http://libemf.sourceforge.net/
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
@@ -45,6 +46,7 @@ Pliki nagłówkowe libEMF.
 %setup -q
 %patch0 -p1 -b .amd64
 %patch1 -p1 -b .axp
+%patch2 -p1 -b .gcc43
 chmod 0644 libemf/libemf.h
 
 %build
@@ -90,6 +92,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/libEMF
 
 %changelog
+* Sun Jan 06 2008 Dominik 'Rathann' Mierzejewski <rpm@greysector.net> 1.0.3-6
+- fixed compilation with gcc-4.3
+
 * Mon Dec 03 2007 Dominik 'Rathann' Mierzejewski <rpm@greysector.net> 1.0.3-5
 - fixed compilation on Alpha platform (patch by Oliver Falk)
 
