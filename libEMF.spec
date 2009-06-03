@@ -2,7 +2,7 @@ Summary:	A library for generating Enhanced Metafiles
 Summary(pl):	Biblioteka do generowania plików w formacie Enhanced Metafile
 Name:		libEMF
 Version:	1.0.3
-Release:	8%{?dist}
+Release:	9%{?dist}
 License:	LGPLv2+ and GPLv2+
 Group:		System Environment/Libraries
 Source0:	http://dl.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
@@ -10,6 +10,7 @@ Source0:	http://dl.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
 Patch0:		%{name}-amd64.patch
 Patch1:		%{name}-axp.patch
 Patch2:		%{name}-gcc43.patch
+Patch3:		%{name}-s390.patch
 URL:		http://libemf.sourceforge.net/
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
@@ -47,6 +48,7 @@ Pliki nagłówkowe libEMF.
 %patch0 -p1 -b .amd64
 %patch1 -p1 -b .axp
 %patch2 -p1 -b .gcc43
+%patch3 -p1 -b .s390
 chmod 0644 libemf/libemf.h
 
 %build
@@ -92,6 +94,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/libEMF
 
 %changelog
+* Wed Jun  3 2009 Dan Horak <dan[at]danny.cz> - 1.0.3-9
+- add support for s390/s390x
+
 * Wed Feb 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0.3-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
