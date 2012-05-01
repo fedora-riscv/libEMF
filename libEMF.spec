@@ -2,18 +2,19 @@ Summary:	A library for generating Enhanced Metafiles
 Summary(pl):	Biblioteka do generowania plików w formacie Enhanced Metafile
 Name:		libEMF
 Version:	1.0.4
-Release:	3%{?dist}
+Release:	4%{?dist}
 License:	LGPLv2+ and GPLv2+
 Group:		System Environment/Libraries
+URL:		http://libemf.sourceforge.net/
+
 Source0:	http://downloads.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
 # Source0-md5:	a4e91fd8077ce5f540f569e20e8ef7ff
 Patch0:		%{name}-amd64.patch
 Patch1:		%{name}-axp.patch
-Patch3:		%{name}-s390.patch
-URL:		http://libemf.sourceforge.net/
+Patch2:		%{name}-s390.patch
+Patch3:		%{name}-arm.patch
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(id -u -n)
 
 %description
 libEMF is a library for generating Enhanced Metafiles on systems which
@@ -46,35 +47,32 @@ Pliki nagłówkowe libEMF.
 %setup -q
 %patch0 -p1 -b .amd64
 %patch1 -p1 -b .axp
-%patch3 -p1 -b .s390
+%patch2 -p1 -b .s390
+%patch3 -p1 -b .arm
+
 chmod 0644 libemf/libemf.h
 
 %build
 # supplied libtool is broken (no C++ libraries support)
-%{__libtoolize} --force
-%{__aclocal}
-%{__autoconf}
-%{__automake}
+libtoolize --force
+aclocal
+autoconf
+automake
 %configure \
 	--disable-static \
 	--enable-editing
 
-%{__make} %{?_smp_mflags}
+make %{?_smp_mflags}
 
 %install
-rm -rf $RPM_BUILD_ROOT
-
 export CPPROG="cp -p"
-%{__make} install \
+make install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 rm $RPM_BUILD_ROOT%{_libdir}/libEMF.la
 
 %check
-%{__make} check
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+make check
 
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
@@ -92,6 +90,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/libEMF
 
 %changelog
+* Tue May  1 2012 Peter Robinson <pbrobinson@fedoraproject.org> - 1.0.4-4
+- Add support for ARM using definitions from WINE
+
 * Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0.4-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 
