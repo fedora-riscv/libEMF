@@ -2,7 +2,7 @@ Summary:	A library for generating Enhanced Metafiles
 Summary(pl):	Biblioteka do generowania plików w formacie Enhanced Metafile
 Name:		libEMF
 Version:	1.0.4
-Release:	4%{?dist}
+Release:	5%{?dist}
 License:	LGPLv2+ and GPLv2+
 Group:		System Environment/Libraries
 URL:		http://libemf.sourceforge.net/
@@ -90,6 +90,9 @@ make check
 %{_includedir}/libEMF
 
 %changelog
+* Thu Jul 19 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0.4-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
 * Tue May  1 2012 Peter Robinson <pbrobinson@fedoraproject.org> - 1.0.4-4
 - Add support for ARM using definitions from WINE
 
