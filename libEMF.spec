@@ -1,13 +1,13 @@
 Summary:	A library for generating Enhanced Metafiles
 Summary(pl):	Biblioteka do generowania plików w formacie Enhanced Metafile
 Name:		libEMF
-Version:	1.0.4
-Release:	5%{?dist}
+Version:	1.0.6
+Release:	1%{?dist}
 License:	LGPLv2+ and GPLv2+
 Group:		System Environment/Libraries
 URL:		http://libemf.sourceforge.net/
 
-Source0:	http://downloads.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/project/libemf/libemf/%{version}/libEMF-%{version}.tar.gz
 # Source0-md5:	a4e91fd8077ce5f540f569e20e8ef7ff
 Patch0:		%{name}-amd64.patch
 Patch1:		%{name}-axp.patch
@@ -90,6 +90,11 @@ make check
 %{_includedir}/libEMF
 
 %changelog
+* Mon Sep 03 2012 Dominik 'Rathann' Mierzejewski <rpm@greysector.net> 1.0.6-1
+- updated to 1.0.6
+- updated source URL
+- dropped obsolete patch hunks and rebased patches
+
 * Thu Jul 19 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0.4-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 

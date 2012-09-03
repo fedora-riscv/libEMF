@@ -1,8 +1,8 @@
-diff -up libEMF-1.0.3/include/libEMF/wine/winnt.h.axp libEMF-1.0.3/include/libEMF/wine/winnt.h
---- libEMF-1.0.3/include/libEMF/wine/winnt.h.axp	2007-12-03 22:35:49.000000000 +0100
-+++ libEMF-1.0.3/include/libEMF/wine/winnt.h	2007-12-03 22:37:10.000000000 +0100
-@@ -671,7 +671,7 @@ typedef struct _CONTEXT CONTEXT;
- #endif
+diff -up libEMF-1.0.6/include/libEMF/wine/winnt.h.axp libEMF-1.0.6/include/libEMF/wine/winnt.h
+--- libEMF-1.0.6/include/libEMF/wine/winnt.h.axp	2012-09-03 22:50:29.000000000 +0200
++++ libEMF-1.0.6/include/libEMF/wine/winnt.h	2012-09-03 22:52:12.000000000 +0200
+@@ -901,7 +901,7 @@ PVOID WINAPI             RtlVirtualUnwin
+ #endif /* __x86_64__ */
  
  /* Alpha context definitions */
 -#ifdef _ALPHA_
