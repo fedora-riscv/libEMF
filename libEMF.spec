@@ -1,21 +1,13 @@
 Summary:	A library for generating Enhanced Metafiles
 Summary(pl):	Biblioteka do generowania plików w formacie Enhanced Metafile
 Name:		libEMF
-Version:	1.0.6
-Release:	2%{?dist}
+Version:	1.0.7
+Release:	1%{?dist}
 License:	LGPLv2+ and GPLv2+
 Group:		System Environment/Libraries
 URL:		http://libemf.sourceforge.net/
-
 Source0:	http://downloads.sourceforge.net/project/libemf/libemf/%{version}/libEMF-%{version}.tar.gz
-# Source0-md5:	a4e91fd8077ce5f540f569e20e8ef7ff
-Patch0:		%{name}-amd64.patch
-Patch1:		%{name}-axp.patch
-Patch2:		%{name}-s390.patch
-Patch3:		%{name}-arm.patch
-Patch4:         %{name}-lp64.patch
 BuildRequires:	libstdc++-devel
-BuildRequires:	libtool
 
 %description
 libEMF is a library for generating Enhanced Metafiles on systems which
@@ -46,20 +38,8 @@ Pliki nagłówkowe libEMF.
 
 %prep
 %setup -q
-%patch0 -p1 -b .amd64
-%patch1 -p1 -b .axp
-%patch2 -p1 -b .s390
-%patch3 -p1 -b .arm
-%patch4 -p1 -b .lp64
-
-chmod 0644 libemf/libemf.h
 
 %build
-# supplied libtool is broken (no C++ libraries support)
-libtoolize --force
-aclocal
-autoconf
-automake
 %configure \
 	--disable-static \
 	--enable-editing
@@ -80,18 +60,21 @@ make check
 %postun	-p /sbin/ldconfig
 
 %files
-%defattr(644,root,root,755)
 %doc AUTHORS ChangeLog COPYING COPYING.LIB NEWS README
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*
 
 %files devel
-%defattr(644,root,root,755)
 %doc doc/html
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/libEMF
 
 %changelog
+* Wed Nov 07 2012 Stanislav Ochotnicky <sochotnicky@redhat.com> - 1.0.7-1
+- Update to latest upstream
+- Drop all patches (upstreamed)
+- Small packaging cleanups
+
 * Mon Nov  5 2012 Stanislav Ochotnicky <sochotnicky@redhat.com> - 1.0.6-2
 - Fixes for non-x86 64bit architectures
 
