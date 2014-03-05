@@ -2,12 +2,12 @@ Summary:	A library for generating Enhanced Metafiles
 Summary(pl):	Biblioteka do generowania plików w formacie Enhanced Metafile
 Name:		libEMF
 Version:	1.0.7
-Release:	3%{?dist}
+Release:	4%{?dist}
 License:	LGPLv2+ and GPLv2+
-Group:		System Environment/Libraries
 URL:		http://libemf.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/project/libemf/libemf/%{version}/libEMF-%{version}.tar.gz
 BuildRequires:	libstdc++-devel
+BuildRequires:	libtool
 
 %description
 libEMF is a library for generating Enhanced Metafiles on systems which
@@ -26,7 +26,6 @@ zaimplementowany bardzo ograniczony podzbiór GDI.
 %package devel
 Summary:	libEMF header files
 Summary(pl):	Pliki nagłówkowe libEMF
-Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
 
@@ -38,6 +37,7 @@ Pliki nagłówkowe libEMF.
 
 %prep
 %setup -q
+autoreconf -vif
 
 %build
 %configure \
@@ -61,15 +61,19 @@ make check
 
 %files
 %doc AUTHORS ChangeLog COPYING COPYING.LIB NEWS README
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*
+%{_bindir}/*
+%{_libdir}/lib*.so.*
 
 %files devel
 %doc doc/html
-%attr(755,root,root) %{_libdir}/lib*.so
+%{_libdir}/lib*.so
 %{_includedir}/libEMF
 
 %changelog
+* Thu Mar 06 2014 Dominik 'Rathann' Mierzejewski <rpm@greysector.net> 1.0.7-4
+- fix build on aarch64 (bug #925711)
+- drop some obsolete/redundant specfile parts
+
 * Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0.7-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
