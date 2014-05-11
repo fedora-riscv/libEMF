@@ -2,12 +2,12 @@ Summary:	A library for generating Enhanced Metafiles
 Summary(pl):	Biblioteka do generowania plików w formacie Enhanced Metafile
 Name:		libEMF
 Version:	1.0.7
-Release:	4%{?dist}
+Release:	5%{?dist}
 License:	LGPLv2+ and GPLv2+
 URL:		http://libemf.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/project/libemf/libemf/%{version}/libEMF-%{version}.tar.gz
+Patch0:		libEMF-aarch64.patch
 BuildRequires:	libstdc++-devel
-BuildRequires:	libtool
 
 %description
 libEMF is a library for generating Enhanced Metafiles on systems which
@@ -37,7 +37,7 @@ Pliki nagłówkowe libEMF.
 
 %prep
 %setup -q
-autoreconf -vif
+%patch0 -p1 -b .aarch64
 
 %build
 %configure \
@@ -70,6 +70,9 @@ make check
 %{_includedir}/libEMF
 
 %changelog
+* Sun May 11 2014 Peter Robinson <pbrobinson@fedoraproject.org> 1.0.7-7
+- Add initial patch for aarch64 support (likely needs more work)
+
 * Thu Mar 06 2014 Dominik 'Rathann' Mierzejewski <rpm@greysector.net> 1.0.7-4
 - fix build on aarch64 (bug #925711)
 - drop some obsolete/redundant specfile parts
