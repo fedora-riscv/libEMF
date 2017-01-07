@@ -1,11 +1,11 @@
 Summary:	A library for generating Enhanced Metafiles
 Summary(pl):	Biblioteka do generowania plików w formacie Enhanced Metafile
 Name:		libEMF
-Version:	1.0.8
-Release:	2%{?dist}
+Version:	1.0.9
+Release:	1%{?dist}
 License:	LGPLv2+ and GPLv2+
 URL:		http://libemf.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/project/libemf/libemf/%{version}/libemf-%{version}.tar.gz
+Source0:	https://downloads.sourceforge.net/project/libemf/libemf/%{version}/libemf-%{version}.tar.gz
 Patch0:		libEMF-aarch64.patch
 BuildRequires:	libstdc++-devel
 
@@ -52,7 +52,6 @@ make install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 rm $RPM_BUILD_ROOT%{_libdir}/libEMF.la
-mv $RPM_BUILD_ROOT%{_includedir}/{libemf,libEMF}
 
 %check
 make check
@@ -61,16 +60,23 @@ make check
 %postun	-p /sbin/ldconfig
 
 %files
-%doc AUTHORS ChangeLog COPYING COPYING.LIB NEWS README
-%{_bindir}/*
-%{_libdir}/lib*.so.*
+%license COPYING COPYING.LIB
+%doc AUTHORS ChangeLog NEWS README
+%{_bindir}/printemf
+%{_libdir}/libEMF.so.1*
 
 %files devel
-%doc doc/html
-%{_libdir}/lib*.so
+%doc doc/html/*
+%{_libdir}/libEMF.so
 %{_includedir}/libEMF
 
 %changelog
+* Sat Jan 07 2017 Dominik 'Rathann' Mierzejewski <rpm@greysector.net> 1.0.9-1
+- update to 1.0.9
+- use license macro
+- tighten file list wildcards
+- switch to https for source URL
+
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.8-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
