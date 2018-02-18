@@ -7,7 +7,7 @@ License:	LGPLv2+ and GPLv2+
 URL:		http://libemf.sourceforge.net/
 Source0:	https://downloads.sourceforge.net/project/libemf/libemf/%{version}/libemf-%{version}.tar.gz
 Patch0:		libEMF-aarch64.patch
-BuildRequires:	libstdc++-devel
+BuildRequires:	gcc-c++
 
 %description
 libEMF is a library for generating Enhanced Metafiles on systems which
