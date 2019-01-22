@@ -56,8 +56,7 @@ rm $RPM_BUILD_ROOT%{_libdir}/libEMF.la
 %check
 make check
 
-%post	-p /sbin/ldconfig
-%postun	-p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license COPYING COPYING.LIB
