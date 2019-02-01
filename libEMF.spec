@@ -2,7 +2,7 @@ Summary:	A library for generating Enhanced Metafiles
 Summary(pl):	Biblioteka do generowania plików w formacie Enhanced Metafile
 Name:		libEMF
 Version:	1.0.9
-Release:	6%{?dist}
+Release:	7%{?dist}
 License:	LGPLv2+ and GPLv2+
 URL:		http://libemf.sourceforge.net/
 Source0:	https://downloads.sourceforge.net/project/libemf/libemf/%{version}/libemf-%{version}.tar.gz
@@ -70,6 +70,9 @@ make check
 %{_includedir}/libEMF
 
 %changelog
+* Fri Feb 01 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.9-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.9-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
