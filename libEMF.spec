@@ -1,7 +1,7 @@
 Summary:	A library for generating Enhanced Metafiles
 Summary(pl):	Biblioteka do generowania plików w formacie Enhanced Metafile
 Name:		libEMF
-Version:	1.0.12
+Version:	1.0.13
 Release:	1%{?dist}
 License:	LGPLv2+ and GPLv2+
 URL:		http://libemf.sourceforge.net/
@@ -68,6 +68,10 @@ make check
 %{_includedir}/libEMF
 
 %changelog
+* Sun Jun 21 2020 Dominik 'Rathann' Mierzejewski <rpm@greysector.net> 1.0.13-1
+- update to 1.0.13 (#1846926)
+- fixes CVE-2020-13999
+
 * Fri May 01 2020 Dominik 'Rathann' Mierzejewski <rpm@greysector.net> 1.0.12-1
 - update to 1.0.12 (#1827949)
 - drop obsolete patch
