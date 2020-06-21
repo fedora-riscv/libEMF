@@ -71,6 +71,7 @@ make check
 * Fri May 01 2020 Dominik 'Rathann' Mierzejewski <rpm@greysector.net> 1.0.12-1
 - update to 1.0.12 (#1827949)
 - drop obsolete patch
+- fixes CVE-2020-11863, CVE-2020-11864, CVE-2020-11865, CVE-2020-11866
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.9-9
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
