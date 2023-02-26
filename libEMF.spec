@@ -9,7 +9,7 @@ Source0:	https://downloads.sourceforge.net/project/libemf/libemf/%{version}/libe
 BuildRequires:	gcc-c++
 BuildRequires: make
 
-Patch10:    libemf-1.0.9-add-riscv64.patch
+Patch10:    libemf-add-riscv64.patch
 
 %description
 libEMF is a library for generating Enhanced Metafiles on systems which
